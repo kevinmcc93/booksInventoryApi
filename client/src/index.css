@@ -1,0 +1,248 @@
+html {
+  display: flex;
+  min-height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;}
+
+td {
+  border: 4px;
+  background:rgb(245, 245, 245);
+}
+
+.searchButton {
+    width: max-content;
+    display: inline-block;
+    padding: 12px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    background-color: #0077cc;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .searchButton:hover {
+    background-color: #015a9e;
+  }
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+.logo {
+  max-width: 25%;
+  height: auto;
+}
+
+.filterNameTextBox {
+  display: inline-flex;
+  padding: 20px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.filterAuthorTextBox {
+  display: inline-flex;
+  padding: 20px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.datePicker {
+  display: inline-block;
+  padding: 10px 5px;
+  border-radius: 4px;
+  height: 50%;
+  width: 70%;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+@media screen and (max-width: 1200px) {
+  .button-text {
+    display: none;
+  }
+  .filterNameTextBox, .filterAuthorTextBox, .datePicker {
+    font-size: 14px;
+    padding: 5px;
+  }
+  .form-group {
+    margin: 5px;
+  }
+  .form-check-input {
+    margin-top: 5px;
+  }
+  .searchButton {
+    margin-top: 5px;
+  }
+  .datePicker {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  .editButton {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%!important;
+  }
+  .deleteButton {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 1px;
+    display: inline-flex;
+    width: 100%!important;
+  }
+  .addButton {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%!important;
+    padding: 5px 10px!important;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+
+.editButton {
+  background: #0077cc;
+  width: 40%;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5%;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.editButton:hover {
+  background-color: #015a9e;
+}
+
+.editButton:focus {
+  background-color: #044a80;
+}
+
+.editButton:active {
+  background-color: #053b64;
+}
+
+.deleteButton {
+  background: rgb(235, 35, 35);
+  width: 40%;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.deleteButton:hover {
+  background-color: #A50000 ;
+}
+
+.deleteButton:focus {
+  background-color: #960909;
+}
+
+.deleteButton:active {
+  background-color: #830d0d;
+}
+
+.addButton {
+  margin-left: 3%;
+  background: rgb(59, 196, 0);
+  width: 90%;
+  color: white;
+  display: inline-block;
+  padding: 5px 1px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.addButton:hover {
+  background-color: #008100;
+}
+
+.addButton:focus {
+  background-color: #006400;
+}
+
+.addButton:active {
+  background-color: 006400;
+}
+
+.myTable {
+  margin-bottom: 100px;
+}
+
+td.col-sm-4, td.col-sm-3, td.col-sm-2 {
+  vertical-align: middle;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #cccccc;
+  padding: 8px;
+  text-align: center;
+  height: 60px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+footer ul {
+  margin-bottom: 0;
+}
+
+footer a {
+  color: #000000;
+}
+
+footer a:hover {
+  color: #007bff;
+}
+
+.githubIcon {
+  padding: 2px;
+  height: 20px;
+  width: auto;
+}
+
+.linkedInIcon {
+  padding: 2px;
+  height: 20px;
+  width: auto;
+}
+
+.emailIcon {
+  padding: 2px;
+  height: 20px;
+  width: auto;
+}
+

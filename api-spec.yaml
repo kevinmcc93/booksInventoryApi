@@ -1,0 +1,195 @@
+openapi: 3.0.0
+servers:
+  - description: Book Inventory API
+    url: http://localhost:8080/
+info:
+  description: This API should manage book inventory
+  version: "1.0.0"
+  title: Book Inventory API
+  contact:
+    email: kevinmcc93@gmail.com
+tags:
+  - name: books
+    description: Endpoints for books data 
+paths:
+  /books:
+    get:
+      tags: 
+        - books
+      summary: Returns all books or a filtered list of books
+      operationId: getBooks
+      description: Returns an array of JSON objects containing either all books, 
+        or books matching the provided filters
+      parameters:
+        - in: query
+          name: name
+          description: Filter the list of books by a book name (includes partial matches).
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: releaseDate
+          description: Filter the list of books by an exact release date.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: author
+          description: Filter the list of books by an author to only receive their books. 
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of books matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      tags: 
+        - books
+      summary: Add a book to the list of books
+      operationId: addBook
+      description: Create a new JSON object to add the list of books. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookToAdd'
+        description: Book object to add
+      responses:
+        '201':
+          description: Book added to the list of books
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '400':
+          description: 'Invalid input, object invalid'
+
+  /books/{id}:
+    get:
+      tags: 
+          - books
+      summary: Returns a specific book
+      operationId: getBookById
+      description: Returns a JSON object for a specific book by searching via it's unique ID
+      parameters:
+        - in: path
+          name: id
+          description: Find a specific book using the books unique ID. 
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested book object
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Book'
+        '404':
+          description: Book not found
+    patch:
+      tags: 
+        - books
+      summary: Update the details for a book
+      operationId: updateBook
+      description: Update any mutable property of the book JSON object (name, release date and author)
+      parameters:
+        - in: path
+          name: id
+          description: Update a specific book using the books unique ID. 
+          required: true
+          schema:
+            type: string      
+      responses:
+        '200':
+          description: 'Book details updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Book not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookToEdit'
+        description: Mutable book object properties
+    delete:
+      tags: 
+        - books
+      summary: Deletes a book from the list of books
+      operationId: deleteBook
+      description: Delete a book using it's unique ID
+      parameters:
+        - in: path
+          name: id
+          description: Remove a specific book using the books unique ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Book deleted
+        '404':
+          description: Book not found
+components:
+  schemas:
+    Book:
+      type: object
+      required:
+        - id
+        - name
+        - author
+        - releaseDate
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 'd290f1ee-6c54-4b01-90e6-d701748f0851'
+        name:
+          type: string
+          example: 'Harry Potter and the Goblet of Fire'
+        releaseDate:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+        author:
+          type: string
+          example: 'J.K Rowling'
+    BookToAdd:
+      type: object
+      required:
+        - name
+        - author
+        - releaseDate
+      properties:
+        name:
+          type: string
+          example: 'Harry Potter and the Goblet of Fire'
+        releaseDate:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+        author:
+          type: string
+          example: 'J.K Rowling'
+    BookToEdit:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Harry Potter and the Goblet of Fire'
+        releaseDate:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+        author:
+          type: string
+          example: 'J.K Rowling'
