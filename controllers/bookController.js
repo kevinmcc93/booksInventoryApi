@@ -68,7 +68,7 @@ exports.addBook = async (req, res) => {
   };
 }
 
-// Retrieve a single book by ID - works
+// Retrieve a single book by ID
 exports.getBookById = (req, res) => {
   const bookId = req.params._id;
   const book = books.findIndex((book) => book._id === bookId);
@@ -96,14 +96,14 @@ exports.updateBook = (req, res) => {
     };
 
     books[bookIndex] = updatedBook;
-    res.status(200).json(updatedBook); // Responding with 204 and the updated book object is not standard. Consider using 200 or 201 instead.
+    res.status(200).json(updatedBook);
   } else {
     res.status(404).send('Book not found');
   }
 };
 
 
-// Delete a book by ID - works
+// Delete a book by ID
 exports.deleteBook = (req, res) => {
   const bookId = req.params._id;
   const book = books.findIndex((book) => book._id === bookId);
